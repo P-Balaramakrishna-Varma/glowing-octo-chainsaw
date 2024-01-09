@@ -9,7 +9,7 @@
 - There are only 4999 samples in the dataset. We use 1000 samples for test/validation and 3999 for training.
 - The samples distribution across the classes is not unifrom. The dataset is imbalanced. Refer to the python notebook for more details.
 - Data processing is done by using the hugging face bert tokenizer.
-
+- There are 1731 transcription which have more than 512 tokens. The distribution is present in the notebook.
 
 ## Solution Outline
 - **Iteration 1**: Implementing the standard approach for this dataset.
@@ -36,9 +36,17 @@
 - This means that classification head is not the bottleneck but the sentence embedding is.
 
 
-
 ## Iteration 3
+- To improve the sentance embedding instead of taking linear transformation after aggregation of word embeddings, we take a linear transformation of each word embedding and then aggregate them.
+- Note theorectically both the approaches are same, but the later approach is more numerically stable.
+- Accuracy achieved: 35.0% 
+- Conclusion: There is no gain achieved by this approach.
 
+## Iteration 4
+- In all the approcahes above we have used truncated the transcription to 512 tokens if it is longer than that.
+- In this Iteration I use the full transcription using slidding window approach aggregating word embeddings of all words in the transcription.
+- I have not implemented a custom_collate function to perform batching. So I am using batch size of 1.
+- Accuracy achieved: 35.0%
 
 ## Improvement scope
 - Creating a bigger and more balanced dataset.
