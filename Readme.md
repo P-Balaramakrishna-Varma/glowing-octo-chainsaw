@@ -51,3 +51,9 @@
 ## Improvement scope
 - Creating a bigger and more balanced dataset.
 - Using a better pretained model to generate a better sentence embedding.
+
+
+## Repository Structure
+* head.ipynb - Iteration 2
+* approach2.ipynb - Iteration 3
+* slidding_window.ipynb - Iteration 4
